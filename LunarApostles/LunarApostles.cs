@@ -161,6 +161,7 @@ namespace LunarApostles
       // Base
       ContentAddition.AddEntityState<BaseCannonState>(out _);
       ContentAddition.AddEntityState<BaseSitState>(out _);
+      ContentAddition.AddEntityState<BaseExitSit>(out _);
       // Design + Soul
       ContentAddition.AddEntityState<PrepBlunderbuss>(out _);
       ContentAddition.AddEntityState<FireBlunderbuss>(out _);
@@ -169,23 +170,20 @@ namespace LunarApostles
       ContentAddition.AddEntityState<FireSeveredCannon>(out _);
       ContentAddition.AddEntityState<FullHouse>(out _);
       ContentAddition.AddEntityState<EnterShockwaveSit>(out _);
-      ContentAddition.AddEntityState<ExitShockwaveSit>(out _);
       ContentAddition.AddEntityState<ShockwaveSit>(out _);
       // Design
       ContentAddition.AddEntityState<ArtilleryBarrage>(out _);
       ContentAddition.AddEntityState<EnterMineSit>(out _);
-      ContentAddition.AddEntityState<ExitMineSit>(out _);
       ContentAddition.AddEntityState<MineSit>(out _);
-
-      ContentAddition.AddEntityState<OrbBarrage>(out _);
-      ContentAddition.AddEntityState<EnterDrainSit>(out _);
-      ContentAddition.AddEntityState<ExitDrainSit>(out _);
-      ContentAddition.AddEntityState<DrainSit>(out _);
+      // Blood
       ContentAddition.AddEntityState<PrepStarCannon>(out _);
       ContentAddition.AddEntityState<FireStarCannon>(out _);
       ContentAddition.AddEntityState<StarFall>(out _);
+      ContentAddition.AddEntityState<EnterDrainSit>(out _);
+      ContentAddition.AddEntityState<DrainSit>(out _);
+      // Soul
+      ContentAddition.AddEntityState<OrbBarrage>(out _);
       ContentAddition.AddEntityState<EnterCrystalSit>(out _);
-      ContentAddition.AddEntityState<ExitCrystalSit>(out _);
       ContentAddition.AddEntityState<CrystalSit>(out _);
     }
 

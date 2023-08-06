@@ -12,7 +12,7 @@ namespace LunarApostles
     {
       base.OnEnter();
       FireWave(characterBody, GetAimRay(), damageStat);
-      outer.SetNextState(new ExitShockwaveSit());
+      outer.SetNextState(new BaseExitSit());
     }
 
     private void FireWave(CharacterBody body, Ray aimRay, float damageStat)

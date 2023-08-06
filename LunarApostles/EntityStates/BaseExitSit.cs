@@ -3,7 +3,7 @@ using RoR2;
 
 namespace LunarApostles
 {
-  public class ExitMineSit : BaseSitState
+  public class BaseExitSit : BaseSitState
   {
     public static float baseDuration;
     public static string soundString;
