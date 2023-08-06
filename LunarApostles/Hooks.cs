@@ -1,20 +1,9 @@
-using BepInEx;
-using BepInEx.Configuration;
-using EntityStates;
 using EntityStates.Missions.LunarScavengerEncounter;
 using EntityStates.MoonElevator;
 using EntityStates.ScavMonster;
-using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using R2API;
 using RoR2;
-using RoR2.CharacterAI;
-using RoR2.Networking;
-using RoR2.Projectile;
 using System;
-using System.Reflection;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -43,6 +32,9 @@ namespace LunarApostles
       On.RoR2.HoldoutZoneController.Start += HoldoutZoneController_Start;
       On.EntityStates.MoonElevator.MoonElevatorBaseState.OnEnter += MoonElevatorBaseState_OnEnter;
       On.EntityStates.Missions.LunarScavengerEncounter.FadeOut.OnEnter += FadeOut_OnEnter;
+      On.EntityStates.ScavMonster.PrepEnergyCannon.OnEnter += PrepEnergyCannon_OnEnter;
+      On.EntityStates.ScavMonster.PrepSack.OnEnter += PrepSack_OnEnter;
+      On.EntityStates.ScavMonster.EnterSit.OnEnter += EnterSit_OnEnter;
     }
 
     private void PreventRegenScrap(ILContext il)
@@ -133,13 +125,13 @@ namespace LunarApostles
       {
         Functions.CreateTube();
         if (LunarApostles.Instance.activatedMass)
-          Functions.Beautify([massMat]);
+          Functions.Beautify(new Material[] { massMat });
         if (LunarApostles.Instance.activatedDesign)
-          Functions.Beautify([designMat]);
+          Functions.Beautify(new Material[] { designMat });
         if (LunarApostles.Instance.activatedBlood)
-          Functions.Beautify([bloodMat]);
+          Functions.Beautify(new Material[] { bloodMat });
         if (LunarApostles.Instance.activatedSoul)
-          Functions.Beautify([glassMat, glassDistortionMat]);
+          Functions.Beautify(new Material[] { glassMat, glassDistortionMat });
       }
       if (SceneManager.GetActiveScene().name == "moon2")
       {
@@ -226,6 +218,57 @@ namespace LunarApostles
         return;
       Functions.LoadPersistentBuffs(self);
       Functions.SetPosition(new Vector3(7f, -5f, -98f), self);
+    }
+
+    private void PrepEnergyCannon_OnEnter(On.EntityStates.ScavMonster.PrepEnergyCannon.orig_OnEnter orig, PrepEnergyCannon self)
+    {
+      if (self.characterBody.name.Contains("ScavLunar"))
+      {
+        if (LunarApostles.Instance.activatedMass)
+          self.outer.SetState(new PrepSeveredCannon());
+        if (LunarApostles.Instance.activatedDesign)
+          self.outer.SetState(new PrepBlunderbuss());
+        if (LunarApostles.Instance.activatedBlood)
+          self.outer.SetState(new PrepStarCannon());
+        if (LunarApostles.Instance.activatedSoul)
+          self.outer.SetState(new PrepBlunderbuss());
+      }
+      else
+        orig(self);
+    }
+
+    private void PrepSack_OnEnter(On.EntityStates.ScavMonster.PrepSack.orig_OnEnter orig, PrepSack self)
+    {
+      if (self.characterBody.name.Contains("ScavLunar"))
+      {
+        if (LunarApostles.Instance.activatedMass)
+          self.outer.SetState(new FullHouse());
+        if (LunarApostles.Instance.activatedDesign)
+          self.outer.SetState(new ArtilleryBarrage());
+        if (LunarApostles.Instance.activatedBlood)
+          self.outer.SetState(new StarFall());
+        if (LunarApostles.Instance.activatedSoul)
+          self.outer.SetState(new OrbBarrage());
+      }
+      else
+        orig(self);
+    }
+
+    private void EnterSit_OnEnter(On.EntityStates.ScavMonster.EnterSit.orig_OnEnter orig, EnterSit self)
+    {
+      if (self.characterBody.name.Contains("ScavLunar"))
+      {
+        if (LunarApostles.Instance.activatedMass)
+          self.outer.SetState(new EnterShockwaveSit());
+        if (LunarApostles.Instance.activatedDesign)
+          self.outer.SetState(new EnterMineSit());
+        if (LunarApostles.Instance.activatedBlood)
+          self.outer.SetState(new EnterDrainSit());
+        if (LunarApostles.Instance.activatedSoul)
+          self.outer.SetState(new EnterCrystalSit());
+      }
+      else
+        orig(self);
     }
 
   }

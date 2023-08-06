@@ -6,11 +6,6 @@
 - The scavs don't have items
 - Prevents drones from going to the scav arena (droneman, beetleguard, zoea, empathy cores still work)
 
-TODOs
-
-- hook into scav states and switch based on pillar activated
-- write all entity states
-
 ## Changelog
 
 **1.2.0**

@@ -1,23 +1,13 @@
 using BepInEx;
 using BepInEx.Configuration;
-using EntityStates;
-using EntityStates.Missions.LunarScavengerEncounter;
-using EntityStates.MoonElevator;
-using EntityStates.ScavMonster;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
 using R2API;
 using RoR2;
 using RoR2.CharacterAI;
-using RoR2.Networking;
 using RoR2.Projectile;
-using System;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 
 namespace LunarApostles

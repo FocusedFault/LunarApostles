@@ -192,14 +192,14 @@ namespace LunarApostles
       {
         total -= greenChance;
         if (pillarDropRng.RangeFloat(0f, total) <= pearlChance)// drop pearl
-          list = [PickupCatalog.FindPickupIndex(RoR2Content.Items.Pearl.itemIndex)];
+          list = new List<PickupIndex> { PickupCatalog.FindPickupIndex(RoR2Content.Items.Pearl.itemIndex) };
         else
         {
           total -= pearlChance;
           if (pillarDropRng.RangeFloat(0f, total) <= redChance) // drop red
             list = Run.instance.availableTier3DropList;
           else
-            list = [PickupCatalog.FindPickupIndex(RoR2Content.Items.ShinyPearl.itemIndex)]; // drop irradiant
+            list = new List<PickupIndex> { PickupCatalog.FindPickupIndex(RoR2Content.Items.ShinyPearl.itemIndex) }; // drop irradiant
         }
       }
       if (list.Count > 0)
