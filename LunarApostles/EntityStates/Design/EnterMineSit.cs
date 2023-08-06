@@ -1,10 +1,9 @@
-using EntityStates;
 using EntityStates.ScavMonster;
 using RoR2;
 
 namespace LunarApostles
 {
-  public class EnterShockwaveSit : BaseSitState
+  public class EnterMineSit : BaseSitState
   {
     public static float baseDuration;
     public static string soundString;
@@ -25,7 +24,7 @@ namespace LunarApostles
       base.FixedUpdate();
       if ((double)fixedAge < duration)
         return;
-      outer.SetNextState((EntityState)new ShockwaveSit());
+      outer.SetNextState(new MineSit());
     }
   }
 }

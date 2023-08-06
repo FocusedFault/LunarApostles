@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LunarApostles
 {
-  public class PrepSeveredCannon : BaseCannonState
+  public class PrepBlunderbuss : BaseCannonState
   {
     public static float baseDuration;
     public static string sound;
@@ -20,7 +20,7 @@ namespace LunarApostles
       Util.PlaySound(PrepEnergyCannon.sound, gameObject);
       if (!(bool)muzzleTransform || !(bool)PrepEnergyCannon.chargeEffectPrefab)
         return;
-      chargeInstance = Object.Instantiate(PrepEnergyCannon.chargeEffectPrefab, muzzleTransform.position, muzzleTransform.rotation);
+      chargeInstance = Object.Instantiate<GameObject>(PrepEnergyCannon.chargeEffectPrefab, muzzleTransform.position, muzzleTransform.rotation);
       chargeInstance.transform.parent = muzzleTransform;
       ScaleParticleSystemDuration component = chargeInstance.GetComponent<ScaleParticleSystemDuration>();
       if (!(bool)component)
@@ -34,7 +34,7 @@ namespace LunarApostles
       StartAimMode(0.5f);
       if ((double)fixedAge < duration || !isAuthority)
         return;
-      outer.SetNextState(new FireSeveredCannon());
+      outer.SetNextState(new FireBlunderbuss());
     }
 
     public override void OnExit()

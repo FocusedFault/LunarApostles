@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LunarApostles
 {
-  public class SeveredCannonState : BaseState
+  public class BaseCannonState : BaseState
   {
     protected Transform muzzleTransform;
 

@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace LunarApostles
 {
-  public class ShockwaveSit : BaseSitState
+  public class MineSit : BaseSitState
   {
     public override void OnEnter()
     {
       base.OnEnter();
       FireWave(characterBody, GetAimRay(), damageStat);
-      outer.SetNextState(new ExitShockwaveSit());
+      outer.SetNextState(new ExitMineSit());
     }
 
     private void FireWave(CharacterBody body, Ray aimRay, float damageStat)
@@ -32,18 +32,17 @@ namespace LunarApostles
         Vector3 forward = Quaternion.AngleAxis(num3 * index, Vector3.up) * vector3_1;
         ProjectileManager.instance.FireProjectile(FistSlam.waveProjectilePrefab, footPosition, Util.QuaternionSafeLookRotation(forward), body.gameObject, body.damage * SeekingBomb.bombDamageCoefficient, FistSlam.waveProjectileForce, Util.CheckRoll(body.crit, body.master));
       }
-      for (int index = 0; index < 6; ++index)
+      for (int index = 0; index < 12; ++index)
       {
         Ray ray = new() { direction = aimRay.direction };
-        Vector3 vector3_2 = new(Random.Range(-25f, 25f), Random.Range(10f, 25f), Random.Range(-25f, 25f));
-        Vector3 vector3_3 = footPosition + vector3_2;
-        ray.origin = vector3_3;
+        Vector3 vector3_2 = characterBody.corePosition + new Vector3(Random.Range(-80f, 80f), Random.Range(0.0f, 1f), Random.Range(-80f, 80f));
+        ray.origin = vector3_2;
         EffectManager.SpawnEffect(LunarApostles.Instance.severPrefab, new EffectData()
         {
           origin = ray.origin,
           rotation = Util.QuaternionSafeLookRotation(ray.direction)
         }, false);
-        ProjectileManager.instance.FireProjectile(LunarApostles.Instance.trackingProjectile, ray.origin, Util.QuaternionSafeLookRotation(ray.direction), body.gameObject, damageStat * SeekingBomb.bombDamageCoefficient, SeekingBomb.bombForce, Util.CheckRoll(body.crit, body.master), speedOverride: 15f);
+        ProjectileManager.instance.FireProjectile(LunarApostles.Instance.trackingProjectile, ray.origin, Util.QuaternionSafeLookRotation(ray.direction), gameObject, damageStat * SeekingBomb.bombDamageCoefficient, SeekingBomb.bombForce, Util.CheckRoll(critStat, characterBody.master), speedOverride: 10f);
       }
     }
   }

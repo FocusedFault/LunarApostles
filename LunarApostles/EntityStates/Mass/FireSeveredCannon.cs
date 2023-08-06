@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LunarApostles
 {
-  public class FireSeveredCannon : SeveredCannonState
+  public class FireSeveredCannon : BaseCannonState
   {
     public static float baseDuration;
     public static float baseRefireDuration;

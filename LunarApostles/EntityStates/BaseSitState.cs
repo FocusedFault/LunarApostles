@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 namespace LunarApostles
 {
-  public class BaseShockwaveSitState : BaseState
+  public class BaseSitState : BaseState
   {
     public override void OnEnter()
     {

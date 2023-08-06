@@ -3,7 +3,7 @@ using RoR2;
 
 namespace LunarApostles
 {
-  public class ExitShockwaveSit : BaseSitState
+  public class ExitMineSit : BaseSitState
   {
     public static float baseDuration;
     public static string soundString;

@@ -158,34 +158,32 @@ namespace LunarApostles
       // blunderbuss artillerybarrage minesit DESIGN
       // starcannon starfall drainsit BLOOD
       // blunderbuss orbbarrage crystalsit SOUL
+      // Base
+      ContentAddition.AddEntityState<BaseCannonState>(out _);
+      ContentAddition.AddEntityState<BaseSitState>(out _);
+      // Design + Soul
+      ContentAddition.AddEntityState<PrepBlunderbuss>(out _);
+      ContentAddition.AddEntityState<FireBlunderbuss>(out _);
       // Mass
-      ContentAddition.AddEntityState<SeveredCannonState>(out _);
       ContentAddition.AddEntityState<PrepSeveredCannon>(out _);
       ContentAddition.AddEntityState<FireSeveredCannon>(out _);
       ContentAddition.AddEntityState<FullHouse>(out _);
-      ContentAddition.AddEntityState<BaseShockwaveSitState>(out _);
       ContentAddition.AddEntityState<EnterShockwaveSit>(out _);
       ContentAddition.AddEntityState<ExitShockwaveSit>(out _);
       ContentAddition.AddEntityState<ShockwaveSit>(out _);
       // Design
-      ContentAddition.AddEntityState<OrbBarrage>(out _);
-      ContentAddition.AddEntityState<BaseMineSitState>(out _);
+      ContentAddition.AddEntityState<ArtilleryBarrage>(out _);
       ContentAddition.AddEntityState<EnterMineSit>(out _);
       ContentAddition.AddEntityState<ExitMineSit>(out _);
       ContentAddition.AddEntityState<MineSit>(out _);
-      ContentAddition.AddEntityState<BlunderbussState>(out _);
-      ContentAddition.AddEntityState<PrepBlunderbuss>(out _);
-      ContentAddition.AddEntityState<FireBlunderbuss>(out _);
-      ContentAddition.AddEntityState<ArtilleryBarrage>(out _);
-      ContentAddition.AddEntityState<BaseDrainSitState>(out _);
+
+      ContentAddition.AddEntityState<OrbBarrage>(out _);
       ContentAddition.AddEntityState<EnterDrainSit>(out _);
       ContentAddition.AddEntityState<ExitDrainSit>(out _);
       ContentAddition.AddEntityState<DrainSit>(out _);
-      ContentAddition.AddEntityState<StarCannonState>(out _);
       ContentAddition.AddEntityState<PrepStarCannon>(out _);
       ContentAddition.AddEntityState<FireStarCannon>(out _);
       ContentAddition.AddEntityState<StarFall>(out _);
-      ContentAddition.AddEntityState<BaseCrystalSitState>(out _);
       ContentAddition.AddEntityState<EnterCrystalSit>(out _);
       ContentAddition.AddEntityState<ExitCrystalSit>(out _);
       ContentAddition.AddEntityState<CrystalSit>(out _);
