@@ -175,7 +175,7 @@ namespace LunarApostles
     {
       float greenChance = 40f;
       float pearlChance = 30f;
-      float redChance = 15f;
+      float redChance = 20f;
       float shinyPearlChance = 10f;
 
       Xoroshiro128Plus pillarDropRng = LunarApostles.Instance.pillarDropRng;
@@ -186,7 +186,7 @@ namespace LunarApostles
       float total = greenChance + pearlChance + redChance + shinyPearlChance;
       if (pillarDropRng.RangeFloat(0f, total) <= greenChance)// drop green
       {
-        list = Run.instance.availableTier1DropList;
+        list = Run.instance.availableTier2DropList;
       }
       else
       {
