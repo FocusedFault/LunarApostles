@@ -145,7 +145,7 @@ namespace LunarApostles
         aiSkillDriver1.maxDistance = 160f;
         aiSkillDriver1.maxUserHealthFraction = 0.9f;
         master.GetComponents<AISkillDriver>().Where(x => x.customName == "FireCannon").First().maxDistance = 160f;
-        AISkillDriver aiSkillDriver2 = ((IEnumerable<AISkillDriver>)master.GetComponents<AISkillDriver>()).Where(x => x.skillSlot == SkillSlot.Secondary).First();
+        AISkillDriver aiSkillDriver2 = master.GetComponents<AISkillDriver>().Where(x => x.skillSlot == SkillSlot.Secondary).First();
         aiSkillDriver2.maxUserHealthFraction = 0.95f;
         aiSkillDriver2.maxDistance = 160f;
         master.GetComponents<AISkillDriver>().Where(x => x.skillSlot == SkillSlot.Utility).First().maxUserHealthFraction = 0.85f;
@@ -154,13 +154,20 @@ namespace LunarApostles
 
     private void SkillStateSetup()
     {
+      // severedcannon fullhouse shockwavesit MASS
+      // blunderbuss artillerybarrage minesit DESIGN
+      // starcannon starfall drainsit BLOOD
+      // blunderbuss orbbarrage crystalsit SOUL
+      // Mass
+      ContentAddition.AddEntityState<SeveredCannonState>(out _);
+      ContentAddition.AddEntityState<PrepSeveredCannon>(out _);
+      ContentAddition.AddEntityState<FireSeveredCannon>(out _);
+      ContentAddition.AddEntityState<FullHouse>(out _);
       ContentAddition.AddEntityState<BaseShockwaveSitState>(out _);
       ContentAddition.AddEntityState<EnterShockwaveSit>(out _);
       ContentAddition.AddEntityState<ExitShockwaveSit>(out _);
       ContentAddition.AddEntityState<ShockwaveSit>(out _);
-      ContentAddition.AddEntityState<SeveredCannonState>(out _);
-      ContentAddition.AddEntityState<PrepSeveredCannon>(out _);
-      ContentAddition.AddEntityState<FireSeveredCannon>(out _);
+      // Design
       ContentAddition.AddEntityState<OrbBarrage>(out _);
       ContentAddition.AddEntityState<BaseMineSitState>(out _);
       ContentAddition.AddEntityState<EnterMineSit>(out _);
@@ -182,10 +189,6 @@ namespace LunarApostles
       ContentAddition.AddEntityState<EnterCrystalSit>(out _);
       ContentAddition.AddEntityState<ExitCrystalSit>(out _);
       ContentAddition.AddEntityState<CrystalSit>(out _);
-      ContentAddition.AddEntityState<LuckyCannonState>(out _);
-      ContentAddition.AddEntityState<PrepLuckyCannon>(out _);
-      ContentAddition.AddEntityState<FireLuckyCannon>(out _);
-      ContentAddition.AddEntityState<FullHouse>(out _);
     }
 
   }
