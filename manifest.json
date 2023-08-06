@@ -1,0 +1,10 @@
+﻿{
+  "name": "LunarApostles",
+  "version_number": "1.2.0",
+  "website_url": "",
+  "description": "Reworks Lunar Scavs and makes them optional pillar bosses. Configurable",
+  "dependencies": [
+    "RiskofThunder-R2API_Prefab-1.0.3",
+    "RiskofThunder-R2API_ContentManagement-1.0.2"
+  ]
+}
